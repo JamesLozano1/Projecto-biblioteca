@@ -1,0 +1,10 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+<h1>{{titulo}}</h1>
+
+{% for biblioteca in biblioteca %}
+<article>
+    <h2>{{ biblioteca.nombre }}</h2>
+</article>
+{% endfor %}
+{% endblock %}
