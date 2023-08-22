@@ -11,7 +11,6 @@ class Libro( models.Model ):
     ISBN = models.CharField(max_length=13, help_text='Ingrese el ISBN del Libro')
     autor = models.CharField(help_text='Ingrese el nombre del autor', max_length=50)
     estado = models.CharField(help_text='Ingrese el estado del Libro', max_length=8)
-    # biblioteca_defaul = Biblioteca.objects.first()
     biblioteca = models.ForeignKey(Biblioteca, on_delete=models.CASCADE, null=True)
     def __str__( self ):
         return self.titulo + ' - ' + self.biblioteca.nombre
