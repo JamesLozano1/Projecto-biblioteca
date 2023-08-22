@@ -25,6 +25,20 @@ def libro( request ):
         'libro':libro,
     })
 
+def crear_Libro( request ):
+    if request.method == 'GET':
+        return render( request, 'Libros/crear_Libro.html', {
+            'form':CreatenewLibro(),
+        })
+    else:
+        titulo = request.POST['titulo']
+        autor = request.POST['autor']
+        isbn = request.POST['ISBN']
+        estado = request.POST['estado']
+        biblioteca = Biblioteca.objects.get(id=bibliotecas)
+        Libro.objects.create(titulo=titulo, autor=autor, ISBN=isbn, estado=estado, bibliotecas=biblioteca)
+        return redirect('/libro')
+
 def crear_Biblioteca( request ):
     if request.method == 'GET':
         return render( request, 'Biblioteca/crear_Biblioteca.html', {
@@ -35,16 +49,3 @@ def crear_Biblioteca( request ):
         ubicacion = request.POST['ubicacion']
         Biblioteca.objects.create(nombre=nombre, ubicacion=ubicacion)
         return redirect('/biblioteca')
-
-def crear_Libro( request ):
-    if request.method == 'GET':
-        return render( request, 'Libros/crear_Libro.html', {
-            'form':CreatenewLibro(),
-        })
-    else:
-        titulo = request.POST['titulo']
-        autor = request.POST['autor']
-        ISBN = request.POST['ISBN']
-        estado = request.POST['estado']
-        Libro.objects.create(titulo=titulo, autor=autor, ISBN=ISBN, estado=estado)
-        return redirect('/libro')
