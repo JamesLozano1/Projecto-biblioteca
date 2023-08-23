@@ -31,13 +31,18 @@ def crear_Libro( request ):
             'form':CreatenewLibro(),
         })
     else:
-        titulo = request.POST['titulo']
-        autor = request.POST['autor']
-        isbn = request.POST['ISBN']
-        estado = request.POST['estado']
-        biblioteca = Biblioteca.objects.get(id=bibliotecas)
-        Libro.objects.create(titulo=titulo, autor=autor, ISBN=isbn, estado=estado, bibliotecas=biblioteca)
-        return redirect('/libro')
+        form = CreatenewLibro(request.POST)
+        if form.is_valid():
+            titulo = form.cleaned_data['titulo']
+            autor = form.cleaned_data['autor']
+            ISBN = form.cleaned_data['ISBN']
+            estado = form.cleaned_data['estado']
+            bibliotecas_id = form.cleaned_data['bibliotecas'].id
+            biblioteca = Biblioteca.objects.get(id=bibliotecas_id)
+            Libro.objects.create(titulo=titulo, autor=autor, ISBN=ISBN, estado=estado, bibliotecas=biblioteca)
+            return redirect('/libro')
+        return render(request, 'Libros/crear_Libro.html', 
+        {'form': form})
 
 def crear_Biblioteca( request ):
     if request.method == 'GET':
