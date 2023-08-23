@@ -41,8 +41,9 @@ def crear_Libro( request ):
             biblioteca = Biblioteca.objects.get(id=bibliotecas_id)
             Libro.objects.create(titulo=titulo, autor=autor, ISBN=ISBN, estado=estado, bibliotecas=biblioteca)
             return redirect('/libro')
-        return render(request, 'Libros/crear_Libro.html', 
-        {'form': form})
+        # return render(request, 'Libros/crear_Libro.html', {
+        #     'form': form,
+        #     })
 
 def crear_Biblioteca( request ):
     if request.method == 'GET':

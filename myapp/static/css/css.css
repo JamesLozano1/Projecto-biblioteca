@@ -1,0 +1,72 @@
+h1 {
+    text-align: center;
+}
+
+p{
+    text-align: center;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    position: relative;    
+    left: 44rem;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 24px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+} 
+
+
+ul{
+    list-style: none;
+}
+
+.btn-biblioteca{
+    float: right;
+    position: relative;
+    left: -33rem;
+    top: -2.6rem;
+}
+
+button {
+    border-color: white;
+    background-color: black;
+    color: white;
+    border: 2px solid;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+button:hover {
+    border-color: black;
+    background-color: white;
+    color: black;
+}
+
+
+
+.btn-libro{
+    height: 3rem;
+    width: 6rem;
+    border: 2px solid;
+    padding: 5px ;
+}
+
